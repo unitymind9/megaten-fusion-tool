@@ -5,6 +5,8 @@ import ENEMY_NAMES_JSON from '../data/enemy-names.json';
 import SKILL_NAMES_JSON from '../data/skill-names.json';
 import RACE_NAMES_JSON from '../data/race-names.json';
 import ELEM_NAMES_JSON from '../data/elem-names.json';
+import ITEM_NAMES_JSON from '../data/item-names.json';
+import AREA_NAMES_JSON from '../data/area-names.json';
 
 import { DemonUnlock } from './fusion-settings';
 type ListLookup = { [name: string]: string[] };
@@ -85,19 +87,45 @@ export class CompendiumTranslator {
     for (const [dname, entry] of Object.entries(oldEnemies)) {
       const newEntry = Object.assign({}, entry);
 
-      if (entry['skills']) {
-        newEntry['skills'] = entry['skills'].map(s => this.translate(s, langCode, SKILL_NAMES_JSON));
+      if (Array.isArray(entry['skills'])) {
+        newEntry['skills'] = this.translateList(entry['skills'], language, SKILL_NAMES_JSON);
       }
 
-      if (entry['persona']) {
+      if (typeof entry['persona'] === 'string') {
         newEntry['persona'] = this.translate(entry['persona'], langCode, DEMON_NAMES_JSON);
       }
 
-      if (entry['drops']) {
-        newEntry['drops'] = entry['drops'].map(d => this.translate(d, langCode, SKILL_NAMES_JSON));
+      if (Array.isArray(entry['drops'])) {
+        newEntry['drops'] = entry['drops'].map(d => {
+          const skillName = this.translate(d, langCode, SKILL_NAMES_JSON);
+          return skillName !== d ? skillName : this.translate(d, langCode, ITEM_NAMES_JSON);
+        });
       }
 
-      newEntry['race'] = this.translate(entry['race'], langCode, RACE_NAMES_JSON);
+      if (typeof entry['dodds'] === 'object' && entry['dodds'] !== null) {
+        const newDodds = {};
+        for (const [itemName, chance] of Object.entries(entry['dodds'])) {
+          const skillName = this.translate(itemName, langCode, SKILL_NAMES_JSON);
+          const newItemName = skillName !== itemName ? skillName : this.translate(itemName, langCode, ITEM_NAMES_JSON);
+          newDodds[newItemName] = chance;
+        }
+        newEntry['dodds'] = newDodds;
+      }
+
+      if (typeof entry['area'] === 'string') {
+        newEntry['area'] = this.translate(entry['area'], langCode, AREA_NAMES_JSON);
+      } else if (Array.isArray(entry['area'])) {
+        newEntry['area'] = this.translateList(entry['area'], language, AREA_NAMES_JSON);
+      }
+
+      if (Array.isArray(entry['areas'])) {
+        newEntry['areas'] = this.translateList(entry['areas'], language, AREA_NAMES_JSON);
+      }
+
+      if (typeof entry['race'] === 'string') {
+        newEntry['race'] = this.translate(entry['race'], langCode, RACE_NAMES_JSON);
+      }
+
       newEnemies[this.translate(dname, langCode, ENEMY_NAMES_JSON)] = newEntry;
     }
 
@@ -185,7 +213,7 @@ export class CompendiumTranslator {
 
     for (const { category, unlocked, conditions } of oldUnlocks) {
       const newConditions = {};
-      
+
       for (const [name, cond] of Object.entries(conditions)) {
         const enName = name.split(',').map(d => this.translate(d, langCode, DEMON_NAMES_JSON)).join(',');
         newConditions[enName] = cond;
