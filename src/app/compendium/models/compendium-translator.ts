@@ -20,6 +20,23 @@ export class CompendiumTranslator {
     if (langCode === -1) { return word; }
     const suffixMatch = word.match(/^(.*) ([A-HJ-Z])$/);
     const fromWord = suffixMatch ? suffixMatch[1] : word;
+
+    if (lookup === AREA_NAMES_JSON) {
+      let bestMatch = '';
+      for (const key in lookup) {
+        if (fromWord.startsWith(key) && key.length > bestMatch.length) {
+          bestMatch = key;
+        }
+      }
+
+      if (bestMatch) {
+        const toWord = (lookup[bestMatch] || [])[langCode] || bestMatch;
+        const rest = fromWord.substring(bestMatch.length);
+        const translated = toWord + rest;
+        return suffixMatch ? `${translated} ${suffixMatch[2]}` : translated;
+      }
+    }
+
     const toWord = (lookup[fromWord] || [])[langCode] || fromWord;
     return suffixMatch ? `${toWord} ${suffixMatch[2]}` : toWord;
   }
