@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 
 import { CompendiumRoutingModule } from '../smt4f/compendium-routing.module';
 import { FusionDataService } from '../smt4f/fusion-data.service';
+import { CompendiumTranslator } from '../compendium/models/compendium-translator';
 
 import { COMPENDIUM_CONFIG, FUSION_DATA_SERVICE } from '../compendium/constants';
 import { Smt4CompendiumModule } from '../smt4f/smt4-compendium.module';
@@ -32,6 +33,11 @@ import VEN_FUSION_CHART_JSON from './data/ven-fusion-chart.json';
 import VEN_SPECIAL_RECIPES_JSON from './data/ven-special-recipes.json';
 import VEN_DEMON_UNLOCKS_JSON from './data/ven-demon-unlocks.json';
 import VEN_FUSION_PREREQS_JSON from './data/ven-fusion-prereqs.json';
+import DEMON_NAMES_JSON from './data/demon-names.json';
+import RACE_NAMES_JSON from './data/race-names.json';
+
+CompendiumTranslator.loadOverrides(DEMON_NAMES_JSON);
+CompendiumTranslator.loadOverrides(RACE_NAMES_JSON);
 
 function createCompConfig(): CompendiumConfigSet {
   const affinityElems = COMP_CONFIG_JSON.resistElems.concat(COMP_CONFIG_JSON.affinityElems);
@@ -121,7 +127,7 @@ function createCompConfig(): CompendiumConfigSet {
       elementRace: 'Element'
     };
   }
-  
+
   compConfigs.smt5v.appTitle = 'Shin Megami Tensei V Vengeance';
   compConfigs.smt5v.appCssClasses = ['smt4', 'smt5', 'smt5v'];
   compConfigs.smt5v.settingsKey = 'smt5v-fusion-tool-settings';

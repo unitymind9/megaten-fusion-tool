@@ -12,11 +12,25 @@ import { DemonUnlock } from './fusion-settings';
 type ListLookup = { [name: string]: string[] };
 
 export class CompendiumTranslator {
+  private static translationOverrides: { [word: string]: string[] } = {};
+
+  static loadOverrides(overrides: { [word: string]: string[] }) {
+    CompendiumTranslator.translationOverrides = overrides;
+  }
+
   private langToCode(language: string): number {
     return TRANSLATIONS_JSON.Languages.Languages.slice(1).indexOf(language);
   }
 
   private translate(word: string, langCode: number, lookup: ListLookup): string {
+    const overrideTranslations = CompendiumTranslator.translationOverrides[word];
+    if (overrideTranslations) {
+      const override = overrideTranslations[langCode];
+      if (override) {
+        return override;
+      }
+    }
+
     if (langCode === -1) { return word; }
     const suffixMatch = word.match(/^(.*) ([A-HJ-Z])$/);
     const fromWord = suffixMatch ? suffixMatch[1] : word;

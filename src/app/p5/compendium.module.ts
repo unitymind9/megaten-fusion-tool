@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 
 import { CompendiumRoutingModule } from '../pq2/compendium-routing.module';
 import { FusionDataService } from '../pq2/fusion-data.service';
+import { CompendiumTranslator } from '../compendium/models/compendium-translator';
 
 import { COMPENDIUM_CONFIG, FUSION_DATA_SERVICE, FUSION_TRIO_SERVICE } from '../compendium/constants';
 import { PQCompendiumModule } from '../pq2/pq-compendium.module';
@@ -32,6 +33,9 @@ import ROY_SPECIAL_RECIPES_JSON from './data/roy-special-recipes.json';
 import ROY_FUSION_PREREQS_JSON from './data/roy-fusion-prereqs.json';
 import ROY_FUSION_CHART_JSON from './data/roy-fusion-chart.json';
 import ROY_ELEMENT_CHART_JSON from './data/roy-element-chart.json';
+import DEMON_NAMES_JSON from './data/demon-names.json';
+
+CompendiumTranslator.loadOverrides(DEMON_NAMES_JSON);
 
 function createCompConfig(): CompendiumConfigSet {
   const skillElems = COMP_CONFIG_JSON.resistElems.concat(COMP_CONFIG_JSON.skillElems);

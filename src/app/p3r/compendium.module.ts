@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 
 import { CompendiumRoutingModule } from '../pq2/compendium-routing.module';
 import { FusionDataService } from '../pq2/fusion-data.service';
+import { CompendiumTranslator } from '../compendium/models/compendium-translator';
 
 import { COMPENDIUM_CONFIG, FUSION_DATA_SERVICE, FUSION_TRIO_SERVICE } from '../compendium/constants';
 import { PQCompendiumModule } from '../pq2/pq-compendium.module';
@@ -24,6 +25,10 @@ import AEG_PARTY_DATA_JSON from './data/aeg-party-data.json'
 import AEG_ENEMY_DATA_JSON from './data/aeg-enemy-data.json';
 import AEG_SKILL_DATA_JSON from './data/aeg-skill-data.json';
 import AEG_DEMON_UNLOCKS_JSON from './data/aeg-demon-unlocks.json';
+
+import RACE_NAMES_JSON from './data/race-names.json';
+
+CompendiumTranslator.loadOverrides(RACE_NAMES_JSON);
 
 function createCompConfig(): CompendiumConfigSet {
   const resistElems = COMP_CONFIG_JSON.resistElems;
