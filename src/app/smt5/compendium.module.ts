@@ -36,8 +36,7 @@ import VEN_FUSION_PREREQS_JSON from './data/ven-fusion-prereqs.json';
 import DEMON_NAMES_JSON from './data/demon-names.json';
 import RACE_NAMES_JSON from './data/race-names.json';
 
-CompendiumTranslator.loadOverrides(DEMON_NAMES_JSON);
-CompendiumTranslator.loadOverrides(RACE_NAMES_JSON);
+CompendiumTranslator.loadOverrides(Object.assign(DEMON_NAMES_JSON, RACE_NAMES_JSON));
 
 function createCompConfig(): CompendiumConfigSet {
   const affinityElems = COMP_CONFIG_JSON.resistElems.concat(COMP_CONFIG_JSON.affinityElems);
