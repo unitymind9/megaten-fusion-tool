@@ -82,6 +82,7 @@ export class CompendiumTranslator {
 
     for (const [dname, entry] of Object.entries(oldDemons)) {
       const newEntry = Object.assign({}, entry);
+      newEntry['origName'] = dname;
 
       for (const skillSet of ['skills', 'skillCards']) {
         if (entry[skillSet]) {
@@ -98,6 +99,7 @@ export class CompendiumTranslator {
         }
       }
 
+      newEntry['origRace'] = entry['race'];
       newEntry['race'] = this.translate(entry['race'], langCode, RACE_NAMES_JSON);
 
       if (entry['item']) {

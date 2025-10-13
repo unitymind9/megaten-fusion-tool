@@ -13,9 +13,11 @@ export interface FusionTableHeaders {
 
 export interface Demon {
   race: string;
+  origRace?: string;
   lvl: number;
   currLvl: number;
   name: string;
+  origName?: string;
   price: number;
   inherits: number;
   stats: number[];

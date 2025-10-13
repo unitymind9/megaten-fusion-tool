@@ -84,7 +84,9 @@ export class Compendium implements ICompendium {
     for (const demonJson of this.compConfig.demonData) {
       for (const [name, json] of Object.entries(demonJson)) {
         const race = json['race'];
-        const align = aligns[name] || aligns[race] || 'Neutral-Neutral';
+        const origName = json['origName'] || name;
+        const origRace = json['origRace'] || race;
+        const align = aligns[origName] || aligns[origRace] || 'Neutral-Neutral';
         const [lidark, lawchaos] = align.split('-');
 
         demons[name] = {
