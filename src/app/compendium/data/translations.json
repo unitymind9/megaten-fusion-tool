@@ -12,7 +12,7 @@
     "NowLoading": ["Loading fusion tool... Reopen in a private session if tool does not load.", "Now Loading...", "加载中...若加载卡住请尝试以隐身模式打开此网页", "합체 도구를 불러오는 중... 만약 로드되지 않는다면 시크릿 모드로 다시 열어주세요."]
   },
   "CompendiumComponent": {
-    "DemonList": ["Demon List", "悪魔一覧", "恶魔列表"],
+    "DemonList": ["Demon List", "悪魔一覧", "恶魔列表", "악마 목록"],
     "PersonaList": ["Persona List", "悪魔一覧", "人格面具列表", "페르소나 목록"],
     "ShadowList": ["Shadow List", "悪魔一覧", "敌人列表", "섀도 목록"],
     "SkillList": ["Skill List", "スキル一覧", "技能列表", "스킬 목록"],
@@ -22,7 +22,7 @@
     "FusionCalculator": [" Fusion Calculator", " 合体アプリ", " 合体计算工具", " 합체 계산기"]
   },
   "DemonInheritsComponent": {
-    "SkillAffinities": ["Skill Affinities", "スキル適正"]
+    "SkillAffinities": ["Skill Affinities", "スキル適正", "", "스킬 적성"]
   },
   "DemonListComponent": {
     "AppTitle": ["List of Demons - ", "悪魔一覧 "],
@@ -92,8 +92,8 @@
     "Target": ["Target", "範囲", "Target", "대상"],
     "Rank": ["Rank", "ランク", "Rank", "랭크"],
     "LearnedBy": ["Learned By", "習得", "Learned By", "습득"],
-    "LearnedSkills": ["Learned Skills", "習得スキル"],
-    "NoLearnedSkills": ["No Learned Skills Found", "スキルなし"]
+    "LearnedSkills": ["Learned Skills", "習得スキル", "", "습득 스킬"],
+    "NoLearnedSkills": ["No Learned Skills Found", "スキルなし", "", "스킬 없음"]
   },
   "SmtFissionTableComponent": {
     "SpecialFusionCondition": ["Special Fusion Condition", "合体条件", "Special Fusion Condition", "특수 합체 조건"],
