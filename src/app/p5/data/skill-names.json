@@ -1,0 +1,13 @@
+{
+  "Shock Boost": ["", "", "감전율 UP"],
+  "Dizzy Boost": ["", "", "현기증률 UP"],
+  "Freeze Boost": ["", "", "동결률 UP"],
+  "Sleep Boost": ["", "", "수면률 UP"],
+  "Forget Boost": ["", "", "망각률 UP"],
+  "Confuse Boost": ["", "", "혼란율 UP"],
+  "Fear Boost": ["", "", "공포율 UP"],
+  "Rage Boost": ["", "", "격노율 UP"],
+  "Null Dizzy": ["", "", "현기증 무효"],
+  "Null Rage": ["", "", "격노 무효"],
+  "Ali Dance": ["", "", "얼리 댄스"]
+}

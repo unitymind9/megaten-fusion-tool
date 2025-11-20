@@ -19,6 +19,10 @@ export class FusionChart extends SmtFusionChart {
     '破壊神', '地母神', '龍神', '鬼神',
     '秘神', '威霊', '軍神',
     '天津神', '国津神', '神霊', '混沌王',
+    '대천사', '여신', '영조',
+    '마신', '신수', '성수', '환마',
+    '파괴신', '지모신', '용신', '귀신',
+    '비신', '군신', '쿠니츠카미'
   ];
 
   static readonly DARK_RACES = [
@@ -29,7 +33,9 @@ export class FusionChart extends SmtFusionChart {
     '邪神', '凶鳥', '妖樹',
     '死神', '妖獣', '邪鬼', '幽虫',
     '魔王', '邪龍', '悪霊',
-    '幽鬼', '幽鬼', '狂神'
+    '幽鬼', '幽鬼', '狂神',
+    '악신', '흉조', '요수', '사귀',
+    '마왕', '사룡', '유귀'
   ];
 
   protected fissionChart: FissionTable;

@@ -50,10 +50,10 @@ export class FusionChartComponent implements OnInit, OnChanges, OnDestroy {
   msgs = Translations.FusionChartComponent;
 
   static readonly RESULT_COLORS = Object.entries({
-    'oran': ['-2', 'Erthys', 'Gnome', 'Saki Mitama', 'Random', 'アーシーズ', 'ノーム', 'サキミタマ'],
-    'redd': ['-1', 'Flaemis', 'Salamander', 'Ara Mitama', 'Fiend', 'フレイミーズ', 'サラマンダー', 'アラミタマ'],
-    'gree': ['1', 'Aeros', 'Sylph', 'Kushi Mitama', 'Kusi Mitama', 'UMA', 'エアロス', 'シルキー', 'クシミタマ'],
-    'blue': ['2', 'Aquans', 'Undine', 'Nigi Mitama', 'Enigma', 'アクアンズ', 'ウンディーネ', 'ニギミタマ']
+    'oran': ['-2', 'Erthys', 'Gnome', 'Saki Mitama', 'Random', 'アーシーズ', 'ノーム', 'サキミタマ', '磐石精灵', '어시즈', '幸魂', '사키미타마'],
+    'redd': ['-1', 'Flaemis', 'Salamander', 'Ara Mitama', 'Fiend', 'フレイミーズ', 'サラマンダー', 'アラミタマ', '火精灵', '플레이미즈', '荒魂', '아라미타마'],
+    'gree': ['1', 'Aeros', 'Sylph', 'Kushi Mitama', 'Kusi Mitama', 'UMA', 'エアロス', 'シルキー', 'クシミタマ', '风精灵', '에어로스', '奇魂', '쿠시미타마'],
+    'blue': ['2', 'Aquans', 'Undine', 'Nigi Mitama', 'Enigma', 'アクアンズ', 'ウンディーネ', 'ニギミタマ', '水精灵', '아쿠안즈', '和魂', '니기미타마']
   });
 
   appName: string;
@@ -119,7 +119,7 @@ export class FusionChartComponent implements OnInit, OnChanges, OnDestroy {
     const left = !(this.mitaTable || darks.length) ?
       top : Array(leftOff).fill('').concat(darks, norms, elems);
 
-    this.table = [ [''].concat(top, ['']) ];
+    this.table = [[''].concat(top, [''])];
 
     for (let r = 0; r < left.length; r++) {
       const row = Array(top.length + 2).fill(emResult);
@@ -165,7 +165,7 @@ export class FusionChartComponent implements OnInit, OnChanges, OnDestroy {
       }
 
       if (raceL.indexOf(' x ') !== -1) {
-        const [ raceA, raceB ] = raceL.split(' x ');
+        const [raceA, raceB] = raceL.split(' x ');
         const raceX = raceA.slice(0, 3) + 'x' + raceB.slice(0, 3);
 
         row[0] = raceX;
@@ -182,7 +182,7 @@ export class FusionChartComponent implements OnInit, OnChanges, OnDestroy {
       const race = this.table[0][c];
 
       if (race.indexOf(' x ') !== -1) {
-        const [ raceA, raceB ] = race.split(' x ');
+        const [raceA, raceB] = race.split(' x ');
         this.table[0][c] = raceA.slice(0, 2) + raceB.slice(0, 2);
       }
     }
